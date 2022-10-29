@@ -79,22 +79,23 @@ public class CompanyController {
 	@GetMapping("/IndustrySizeFounded")
 	public ResponseEntity<?> numberPerIndustry() {
 		ResponseEntity<?> response = null;
-		List<Company> allCompanies = companies.findAll();
-		int j = 0, y = 0, k = 0, limit = allCompanies.size() - 1;
+	
+		int j = 0, y = 0, k = 0, limit = companies.findAll().size() - 1;
 
 		ArrayList<PerIndustryDto> countIndustry = new ArrayList<PerIndustryDto>();
 		ArrayList<PerSizeDto> countSize = new ArrayList<PerSizeDto>();
 		ArrayList<PerFoundedDto> countFounded = new ArrayList<PerFoundedDto>();
 
-		Collections.sort(allCompanies, Company.FoundedCompanyComparator);
-		List<Company> auxOrderIndustry = allCompanies;
-		Collections.sort(allCompanies, Company.SizeCompanyComparator);
-		List<Company> auxOrderSize = allCompanies;
-		Collections.sort(allCompanies, Company.IndustryCompanyComparator);
-		List<Company> auxOrderFounded = allCompanies;
+		List<Company> auxOrderIndustry = orderIndustry();
+		
+		List<Company> auxOrderSize = orderSize();
+		
+		List<Company> auxOrderFounded = orderFounded();
+		
 		PerSizeDto perSize;
 		PerFoundedDto perFounded;
 		PerIndustryDto perIndustry;
+		
 		for (int i = 0; i < limit - 1; i++) {
 			j++;
 			y++;
@@ -139,5 +140,24 @@ public class CompanyController {
 
 		return response;
 
+	}
+
+	private List<Company> orderFounded() {
+		List<Company> allCompanies=companies.findAll();
+
+		Collections.sort(allCompanies, Company.FoundedCompanyComparator);
+		return allCompanies;
+	}
+
+	private List<Company> orderSize() {
+		List<Company> allCompanies=companies.findAll();
+		Collections.sort(allCompanies, Company.SizeCompanyComparator);
+		return allCompanies;
+	}
+
+	private List<Company> orderIndustry() {
+		List<Company> companies1 = companies.findAll();
+		Collections.sort(companies1, Company.IndustryCompanyComparator);
+		return companies1;
 	}
 }
