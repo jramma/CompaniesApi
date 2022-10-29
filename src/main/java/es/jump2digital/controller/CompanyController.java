@@ -21,21 +21,7 @@ public class CompanyController {
 
 	@Autowired
 	CompanyRepository companies;
-
-	// http://localhost:8080/getAll
-	@GetMapping("/getAll")
-	public ResponseEntity<?> getAllCompanies() {
-		ResponseEntity<?> response = null;
-		try {
-			response = new ResponseEntity<List<Company>>(companies.findAll(), HttpStatus.OK);
-		} catch (Exception e) {
-			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		return response;
-
-	}
-
+	
 	// Crear un endpoint que devuelva las compañías ordenadas por tamaño
 	// http://localhost:8080/orderBySize
 	@GetMapping("/orderBySize")
@@ -80,7 +66,10 @@ public class CompanyController {
 	public ResponseEntity<?> numberPerIndustry() {
 		ResponseEntity<?> response = null;
 	
-		int j = 0, y = 0, k = 0, limit = companies.findAll().size() - 1;
+		int j = 0;
+		int y = 0; 
+		int k = 0;
+		int limit = companies.findAll().size() - 1;
 
 		ArrayList<PerIndustryDto> countIndustry = new ArrayList<PerIndustryDto>();
 		ArrayList<PerSizeDto> countSize = new ArrayList<PerSizeDto>();

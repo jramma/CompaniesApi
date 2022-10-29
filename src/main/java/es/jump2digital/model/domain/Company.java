@@ -12,10 +12,8 @@ import java.util.regex.Pattern;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Data
 @Setter
@@ -48,7 +46,7 @@ public class Company {
 
 	public int sizeToInt() {
 		int sizeInInt = 0;
-		List<Integer> sizesInInt = new ArrayList<Integer>();
+		List<Integer> sizesInInt = new ArrayList<>();
 		Matcher finder = Pattern.compile("\\d+").matcher(getSize());
 		while (finder.find()) {
 			sizesInInt.add(Integer.parseInt(finder.group()));
@@ -113,7 +111,7 @@ public class Company {
 		return linkedin_url;
 	}
 
-	public static Comparator<Company> SizeCompanyComparator = new Comparator<Company>() {
+	public static Comparator<Company> SizeCompanyComparator = new Comparator<>() {
 		public int compare(Company c1, Company c2) {
 			int size1 = c1.sizeToInt();
 			int size2 = c2.sizeToInt();
@@ -121,7 +119,7 @@ public class Company {
 			return size1 - size2;
 		}
 	};
-	public static Comparator<Company> FoundedCompanyComparator = new Comparator<Company>() {
+	public static Comparator<Company> FoundedCompanyComparator = new Comparator<>() {
 		public int compare(Company c1, Company c2) {
 			int founded1 = c1.getFounded();
 			int founded2 = c2.getFounded();
@@ -129,11 +127,11 @@ public class Company {
 			return founded2 - founded1;
 		}
 	};
-	public static Comparator<Company> IndustryCompanyComparator = new Comparator<Company>() {
+	public static Comparator<Company> IndustryCompanyComparator = new Comparator<>() {
 		public int compare(Company c1, Company c2) {
 			String industry1 = c1.getIndustry();
-			String industry = c2.getIndustry();
-			return industry1.compareTo(industry);
+			String industry2 = c2.getIndustry();
+			return industry1.compareTo(industry2);
 		}
 	};
 
