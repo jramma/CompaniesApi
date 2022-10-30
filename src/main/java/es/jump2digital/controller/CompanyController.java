@@ -56,20 +56,7 @@ public class CompanyController {
 		return response;
 
 	}
-	@GetMapping("/orderByIn")
-	public ResponseEntity<?> in() {
-		ResponseEntity<?> response = null;
-		List<Company> allCompanies = companies.findAll();
-		Collections.sort(allCompanies, Company.IndustryCompanyComparator);
-		try {
-			response = new ResponseEntity<List<Company>>(allCompanies, HttpStatus.OK);
-		} catch (Exception e) {
-			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		return response;
-
-	}
+	
 	// Crear un endpoint que devuelva los siguientes datos: Número
 	// de empresas que hay en cada industria, Número de empresas que
 	// hay por cada rango de tamaños, Número de empresas que hay en cada año de
