@@ -70,21 +70,28 @@ public class CompanyController {
 		int y = 0; 
 		int k = 0;
 		int limit = companies.findAll().size() - 1;
-
-		ArrayList<PerIndustryDto> countIndustry = new ArrayList<PerIndustryDto>();
-		ArrayList<PerSizeDto> countSize = new ArrayList<PerSizeDto>();
-		ArrayList<PerFoundedDto> countFounded = new ArrayList<PerFoundedDto>();
-
-		List<Company> auxOrderIndustry = orderIndustry();
+		/*
+		 * You can do this on a single ArrayList, but doing 
+		 * it on three arrayLists makes it easier to display 
+		 * the sorted list in Postman later.
+		 * 
+		 * The next three List will go introduced 
+		 * in the response List(arraylists) at the end
+		 */
+		ArrayList<PerIndustryDto> countIndustry = new ArrayList<>();
+		ArrayList<PerSizeDto> countSize = new ArrayList<>();
+		ArrayList<PerFoundedDto> countFounded = new ArrayList<>();
 		
-		List<Company> auxOrderSize = orderSize();
-		
+		// I order the List of companies before count:
+		List<Company> auxOrderIndustry = orderIndustry();		
+		List<Company> auxOrderSize = orderSize();	
 		List<Company> auxOrderFounded = orderFounded();
 		
 		PerSizeDto perSize;
 		PerFoundedDto perFounded;
 		PerIndustryDto perIndustry;
 		
+		// This is the way I count the repetitions:
 		for (int i = 0; i < limit - 1; i++) {
 			j++;
 			y++;
@@ -116,15 +123,15 @@ public class CompanyController {
 
 		}
 
-		ArrayList<ArrayList<?>> arraylists = new ArrayList<ArrayList<?>>();
+		ArrayList<ArrayList<?>> arraylists = new ArrayList<>();
 		arraylists.add(countIndustry);
 		arraylists.add(countSize);
 		arraylists.add(countFounded);
 
 		try {
-			response = new ResponseEntity<ArrayList<ArrayList<?>>>(arraylists, HttpStatus.OK);
+			response = new ResponseEntity<>(arraylists, HttpStatus.OK);
 		} catch (Exception e) {
-			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+			response = new ResponseEntity<>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return response;
@@ -150,3 +157,11 @@ public class CompanyController {
 		return companies1;
 	}
 }
+
+
+
+
+
+
+
+//Autor: peperamos.cat

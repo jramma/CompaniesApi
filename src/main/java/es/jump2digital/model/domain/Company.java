@@ -36,11 +36,16 @@ public class Company {
 	private String linkedin_url;
 
 	/*
-	 * No need to create constructor, getters and setters because I have lombok
+	 * No need to create constructor and setters because I have lombok
 	 * imported and installed with the annotations that we see above the class is
 	 * enough
 	 * 
-	 * The Document annotation refers to the collection created in mongo where I
+	 * I needed to create getters for solve a difficulty with the GET endpoint: 
+	 * http://localhost:8080/IndustrySizeFounded. The difficulty was that Industry 
+	 * can be null and I replaced that possibility giving the value "no specified"
+	 * in the getIndustry() when is null industry.
+	 * 
+	 * The @Document annotation refers to the collection created in Mongo, where I
 	 * have the json with the companies
 	 */
 
@@ -110,6 +115,12 @@ public class Company {
 	public String getLinkedin_url() {
 		return linkedin_url;
 	}
+	/*
+	 * It can be done by other ways, but I prefer to use a Comparator to order the 
+	 * list of Companies in the Controllers so I need this three Comparator. 
+	 * The first one orders by Size, the second by Founded and the last one by 
+	 * Industry
+	 */
 
 	public static Comparator<Company> SizeCompanyComparator = new Comparator<>() {
 		public int compare(Company c1, Company c2) {
@@ -136,3 +147,12 @@ public class Company {
 	};
 
 }
+
+
+
+
+
+
+
+
+//Autor: peperamos.cat
