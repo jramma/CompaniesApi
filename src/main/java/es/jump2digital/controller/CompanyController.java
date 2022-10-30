@@ -56,6 +56,20 @@ public class CompanyController {
 		return response;
 
 	}
+	@GetMapping("/orderByIn")
+	public ResponseEntity<?> in() {
+		ResponseEntity<?> response = null;
+		List<Company> allCompanies = companies.findAll();
+		Collections.sort(allCompanies, Company.IndustryCompanyComparator);
+		try {
+			response = new ResponseEntity<List<Company>>(allCompanies, HttpStatus.OK);
+		} catch (Exception e) {
+			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		return response;
+
+	}
 	// Crear un endpoint que devuelva los siguientes datos: Número
 	// de empresas que hay en cada industria, Número de empresas que
 	// hay por cada rango de tamaños, Número de empresas que hay en cada año de
@@ -113,11 +127,11 @@ public class CompanyController {
 			}
 
 			if (i == limit - 2) {
-				perSize = new PerSizeDto(auxOrderSize.get(i).getSize(), j + 2);
+				perSize = new PerSizeDto(auxOrderSize.get(i+1).getSize(), j + 2);
 				countSize.add(perSize);
-				perFounded = new PerFoundedDto(auxOrderFounded.get(i).getFounded(), y + 2);
+				perFounded = new PerFoundedDto(auxOrderFounded.get(i+1).getFounded(), y + 2);
 				countFounded.add(perFounded);
-				perIndustry = new PerIndustryDto(auxOrderIndustry.get(i).getIndustry(), k + 2);
+				perIndustry = new PerIndustryDto(auxOrderIndustry.get(i+1).getIndustry(), k + 2);
 				countIndustry.add(perIndustry);
 			}
 
