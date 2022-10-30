@@ -30,9 +30,9 @@ public class CompanyController {
 		List<Company> allCompanies = companies.findAll();
 		Collections.sort(allCompanies, Company.SizeCompanyComparator);
 		try {
-			response = new ResponseEntity<List<Company>>(allCompanies, HttpStatus.OK);
+			response = new ResponseEntity<>(allCompanies, HttpStatus.OK);
 		} catch (Exception e) {
-			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+			response = new ResponseEntity<>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return response;
@@ -48,9 +48,9 @@ public class CompanyController {
 		List<Company> allCompanies = companies.findAll();
 		Collections.sort(allCompanies, Company.FoundedCompanyComparator);
 		try {
-			response = new ResponseEntity<List<Company>>(allCompanies, HttpStatus.OK);
+			response = new ResponseEntity<>(allCompanies, HttpStatus.OK);
 		} catch (Exception e) {
-			response = new ResponseEntity<String>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
+			response = new ResponseEntity<>(e.getCause().toString(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return response;
