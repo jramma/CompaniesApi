@@ -6,7 +6,7 @@ Reto previo al evento Jump2Digital de Nuwe. Este repositorio contiene una spring
 
 El proyecto puede ser descargado en un archivo .zip y hacerlo funcionar en tu IDE.
 
-#Importante !: tengo instalado y uso lombok en mi IDE. Si no tienes lombok tendrás que crear setters, getters y constructores de las clases.
+*Importante !: tengo instalado y uso lombok en mi IDE. Si no tienes lombok tendrás que crear setters, getters y constructores de las clases.
   
 La API funciona con MongoDB, es necesario tener instalado previamente MongoDb porque utiliza el localHost por defecto. Una vez instalado, crear una base de datos con nombre "jump2digital" que es la indicada en aplications.properties de la API. Subir a jump2digital el json de las compañías del ejercicio en una colección con el nombre "companies". Todo esto se puede hacer fácilmente desde MongoDBCompass que puedes instalar con la instalación de Mongo.
 
