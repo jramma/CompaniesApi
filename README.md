@@ -8,7 +8,7 @@ El proyecto puede ser descargado en un archivo .zip y hacerlo funcionar en tu ID
 
 ***Importante!:*** tengo instalado y uso lombok en mi IDE. Si no tienes lombok tendrás que crear setters, getters y constructores de las clases.
   
-La API funciona con MongoDB, es necesario tener instalado previamente MongoDb porque utiliza el localHost por defecto. Una vez instalado, crear una base de datos con nombre "jump2digital" que es la indicada en aplications.properties de la API. Subir a jump2digital el json de las compañías del ejercicio en una colección con el nombre "companies". Todo esto se puede hacer fácilmente desde MongoDBCompass que puedes instalar con la instalación de Mongo.
+La API funciona con MongoDB, es necesario tener instalado previamente MongoDb porque utiliza el localHost por defecto. Una vez instalado, crear una base de datos con nombre "jump2digital" que es la indicada en aplications.properties de la API. Subir a jump2digital el json (https://challenges-asset-files.s3.us-east-2.amazonaws.com/jobMadrid/companies.json) de las compañías del ejercicio en una colección con el nombre "companies". Todo esto se puede hacer fácilmente desde MongoDBCompass que puedes instalar con la instalación de Mongo.
 
 ## Uso
 El ejercicio exigia tres endpoints y los puedes probar en tu navegador o Postman (recomendado) mientras la API se esté ejecutando en tu IDE.
